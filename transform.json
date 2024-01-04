@@ -1,0 +1,393 @@
+{
+    "name": "akamai_transform",
+    "description": "DataStream 2 Transform - first test with only strings",
+    "settings": {
+        "is_default": true,
+        "null_values": [
+            "-",
+            "^",
+            "-1"
+        ],
+        "output_columns": [
+            {
+                "name": "reqTimeSec",
+                "datatype": {
+                    "type": "epoch",
+                    "index": false,
+                    "primary": true,
+                    "source": null,
+                    "format": "s",
+                    "resolution": "s",
+                    "default": null,
+                    "script": null
+                }
+            },
+            {
+                "name": "country",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "referer",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "reqPort",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "reqMethod",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "streamId",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "tlsOverheadTimeMSec",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "errorCode",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "UA",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "edgeAttempts",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "objSize",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "rspContentType",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "transferTimeMSec",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "startupError",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "overheadBytes",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "state",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "throughput",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "cookie",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "turnAroundTimeMSec",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "tlsVersion",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "cacheStatus",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "version",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "customField",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "edgeIP",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "reqId",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "ewUsageInfo",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "proto",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "breadcrumbs",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "queryStr",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "statusCode",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "rspContentLen",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "city",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "lastByte",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "securityRules",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "range",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "accLang",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "prefetchMidgressHits",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "billingRegion",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "brotliStatus",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "dnsLookupTimeMSec",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "totalBytes",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "cacheable",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "reqEndTimeMSec",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "reqHost",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "reqPath",
+                "datatype": {
+                    "type": "string",
+                    "index": true,
+                    "index_options": {
+                        "fulltext": true
+                    }
+                }
+            },
+            {
+                "name": "cliIP",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "fileSizeBucket",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "serverCountry",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "cp",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "ewExecutionInfo",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "downloadTime",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "timeToFirstByte",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "maxAgeSec",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "bytes",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "originContentLen",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "uncompressedSize",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "xForwardedFor",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "asn",
+                "datatype": {
+                    "type": "string"
+                }
+            },
+            {
+                "name": "unknown",
+                "datatype": {
+                    "type": "map",
+                    "index": true,
+                    "catch_all": true,
+                    "elements": [
+                        {
+                            "type": "string",
+                            "index": true
+                        },
+                        {
+                            "type": "string",
+                            "index": true
+                        }
+                    ]
+                }
+            }
+        ],
+        "compression": "none"
+    },
+    "type": "json"
+}
