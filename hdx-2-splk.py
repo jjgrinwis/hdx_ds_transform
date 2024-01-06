@@ -12,6 +12,8 @@ hdx_username = os.environ['HDX_USERNAME']
 hdx_password = os.environ['HDX_PASSWORD']
 hec_token = os.environ['HEC_TOKEN']
 
+# Setting the Splunk HEC token and using the event endpoint, not the raw one.
+# Using the event one to add some extra metadata to every event.
 headers = {'Authorization':f'Splunk {hec_token}'}
 url = 'http://splunk.great-demo.com:8088/services/collector/event'
 
@@ -66,7 +68,7 @@ if not result.empty:
         # convert the row to JSON which will automatically fix any Timestamp type fields.
         hec_event['event'] = row.to_json()
 
-        # HEC expects a call with one or more individual JSON events messages, so just create on string.
+        # HEC expects a call with one or more individual JSON events messages so just create one string with all events.
         event_list += json.dumps(hec_event)
 
     # now forward the events to our HEC interface
