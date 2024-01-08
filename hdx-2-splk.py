@@ -10,21 +10,14 @@ event_list = ""
 # Created a separate readlonly username in Hydrolix and make sure to store readonly credentials as env. vars.
 hdx_username = os.environ['HDX_USERNAME']
 hdx_password = os.environ['HDX_PASSWORD']
+hdx_hostname = os.environ['HDX_HOSTNAME']
 hec_token = os.environ['HEC_TOKEN']
 
-# Setting the Splunk HEC token and using the event endpoint, not the raw one.
-# Using the event one to add some extra metadata to every event.
 headers = {'Authorization':f'Splunk {hec_token}'}
 url = 'http://splunk.great-demo.com:8088/services/collector/event'
 
 # get data from Hydrolix from the last # of hours
-last_hours = 1
-
-# Our Hydrolix host with a valid certificate and query authentication enabled in hydrolixcluster.yaml k8s file.
-# spec:
-#   acme_enabled: true
-#   enable_query_auth: true
-hdx_hostname = 'hydrolix.great-demo.com'
+last_hours = 10
 
 t1_start = perf_counter()
 # The clickhouse_connect driver is using http, not the jdbc/clickhouse interface which some other libraries are  using.
@@ -62,13 +55,13 @@ if not result.empty:
 
         # Some general HEC metadata to add to our event
         # https://docs.splunk.com/Documentation/SplunkCloud/9.1.2308/Data/FormateventsforHTTPEventCollector
-        hec_event['host'] = "hydrolix.great-demo.com"
+        hec_event['host'] = hdx_hostname
         hec_event['source'] = "hdx-2-splunk"
 
         # convert the row to JSON which will automatically fix any Timestamp type fields.
         hec_event['event'] = row.to_json()
 
-        # HEC expects a call with one or more individual JSON events messages so just create one string with all events.
+        # HEC expects a call with one or more individual JSON events messages so just create one string.
         event_list += json.dumps(hec_event)
 
     # now forward the events to our HEC interface
