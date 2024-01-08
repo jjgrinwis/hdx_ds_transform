@@ -11,6 +11,8 @@ event_list = ""
 hdx_username = os.environ['HDX_USERNAME']
 hdx_password = os.environ['HDX_PASSWORD']
 hdx_hostname = os.environ['HDX_HOSTNAME']
+
+# Splunk HEC token using in authorization header
 hec_token = os.environ['HEC_TOKEN']
 
 headers = {'Authorization':f'Splunk {hec_token}'}
@@ -62,6 +64,7 @@ if not result.empty:
         hec_event['event'] = row.to_json()
 
         # HEC expects a call with one or more individual JSON events messages so just create one string.
+        # Astute readers may have noticed that we're doing some double JSON conversions, HEC if fine with that.
         event_list += json.dumps(hec_event)
 
     # now forward the events to our HEC interface
@@ -74,9 +77,7 @@ if not result.empty:
             t2_stop = perf_counter()
             print(f"splunk upload took {t2_stop - t2_start:.2f} secs")
             print(f'{len(result.index)} records uploaded')
-
         else:
             print(f"something went wrong: {r.status_code}:{r.json()}")
-
 else:
     print("no records found")
