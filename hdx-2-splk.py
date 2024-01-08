@@ -45,8 +45,8 @@ print(f"hydrolix lookup took {t1_stop - t1_start:.2f} secs")
 
 # let's build our splunk HEC JSON even with some extra metadata
 # We added some extra metadata to the JSON HEC event like the data which is the same as the request date.
-# {"time":1704455995.000, "host":"hydrolix.great-demo.com", "source": "hdx-2-splunk","event": { "reqTimeSec": 1704455995000, "reqHost": "api.grinwis.com", "reqPath": "headers", "statusCode": "800" }}
-# {"time":1704455995.000, "host":"hydrolix.great-demo.com", "source": "hdx-2-splunk","event": { "reqTimeSec": 1704455995000, "reqHost": "api.grinwis.com", "reqPath": "headers", "statusCode": "801" }}
+# {"time":1704455995.000, "host":"some_hostname", "source": "hdx-2-splunk","event": { "reqTimeSec": 1704455995000, "reqHost": "api.grinwis.com", "reqPath": "headers", "statusCode": "800" }}
+# {"time":1704455995.000, "host":"some_hostname", "source": "hdx-2-splunk","event": { "reqTimeSec": 1704455995000, "reqHost": "api.grinwis.com", "reqPath": "headers", "statusCode": "801" }}
 if not result.empty:
     for index, row in result.iterrows():
         # If there is a reqTimeSec field it's of type Timestamp.
